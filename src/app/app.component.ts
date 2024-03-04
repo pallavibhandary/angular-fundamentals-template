@@ -10,7 +10,7 @@ import {
   switchMap,
 } from 'rxjs';
 import { MockDataService } from './mock-data.service';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators'
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -46,18 +46,17 @@ export class AppComponent implements OnInit, OnDestroy {
 
     // 3. Add debounce to prevent API calls until user stop typing.
 
-    this.charactersResults$ = this.searchTermByCharacters
-        .pipe
-        // YOUR CODE STARTS HERE
-          map((query: string) => (query ? query.trim() : "")),
-          filter(query => {
-              return query.length > 3;
-          }),
-          debounceTime(500),
-          distinctUntilChanged(),
-          switchMap((query: string) => this.mockDataService.getCharacters(query))
+      this.charactersResults$ = this.searchTermByCharacters
+          .pipe
+          // YOUR CODE STARTS HERE
+          (map((query: string) => (query ? query.trim() : "")),
+              filter((query: string) => {
+                  return query.length > 3;
+              }),
+              debounceTime(500),
+              distinctUntilChanged(),
+              switchMap((query: string) => this.mockDataService.getCharacters(query)));
         // YOUR CODE ENDS HERE
-        ();
   }
 
   loadCharactersAndPlanet(): void {
@@ -67,7 +66,7 @@ export class AppComponent implements OnInit, OnDestroy {
       const firstRequest = this.mockDataService.getCharacters();
       const secondRequest = this.mockDataService.getPlanets();
       this.planetAndCharactersResults$ = forkJoin([firstRequest, secondRequest])
-      .pipe(map(data => data.reduce((result, arr) => [...result, ...arr], [])))
+      .pipe(map((data:[any,any]) => data.reduce((result, arr) => [...result, ...arr], [])))
     // YOUR CODE ENDS HERE
   }
 
