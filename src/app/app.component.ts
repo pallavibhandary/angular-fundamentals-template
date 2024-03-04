@@ -10,6 +10,7 @@ import {
   switchMap,
 } from 'rxjs';
 import { MockDataService } from './mock-data.service';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators'
 
 @Component({
   selector: 'app-root',
@@ -34,7 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
     // 1.1. Add functionality to changeCharactersInput method. Changes searchTermByCharacters Subject value on input change.
     const inputValue: string = element.target.value;
     // YOUR CODE STARTS HERE
-
+    this.searchTermByCharacters.next(inputValue);
     // YOUR CODE ENDS HERE
   }
 
@@ -48,7 +49,13 @@ export class AppComponent implements OnInit, OnDestroy {
     this.charactersResults$ = this.searchTermByCharacters
         .pipe
         // YOUR CODE STARTS HERE
-
+          map((query: string) => (query ? query.trim() : "")),
+          filter(query => {
+              return query.length > 3;
+          }),
+          debounceTime(500),
+          distinctUntilChanged(),
+          switchMap((query: string) => this.mockDataService.getCharacters(query))
         // YOUR CODE ENDS HERE
         ();
   }
@@ -56,7 +63,11 @@ export class AppComponent implements OnInit, OnDestroy {
   loadCharactersAndPlanet(): void {
     // 4. On clicking the button 'Load Characters And Planets', it is necessary to process two requests and combine the results of both requests into one result array. As a result, a list with the names of the characters and the names of the planets is displayed on the screen.
     // Your code should looks like this: this.planetAndCharactersResults$ = /* Your code */
-    // YOUR CODE STARTS HERE
+      // YOUR CODE STARTS HERE
+      const firstRequest = this.mockDataService.getCharacters();
+      const secondRequest = this.mockDataService.getPlanets();
+      this.planetAndCharactersResults$ = forkJoin([firstRequest, secondRequest])
+      .pipe(map(data => data.reduce((result, arr) => [...result, ...arr], [])))
     // YOUR CODE ENDS HERE
   }
 
@@ -66,7 +77,9 @@ export class AppComponent implements OnInit, OnDestroy {
     - Combine the value of each of the streams.
     - Subscribe to changes
     - Check the received value using the areAllValuesTrue function and pass them to the isLoading variable. */
-    // YOUR CODE STARTS HERE
+      // YOUR CODE STARTS HERE
+      const combination = combineLatest([this.mockDataService.getCharactersLoader(), this.mockDataService.getPlanetLoader()])
+      .pipe(map(data => this.areAllValuesTrue(data))).subscribe(data => this.isLoading = data);
     // YOUR CODE ENDS HERE
   }
 
