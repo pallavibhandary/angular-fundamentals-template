@@ -56,6 +56,7 @@ export class AppComponent implements OnInit, OnDestroy {
               debounceTime(500),
               distinctUntilChanged(),
               switchMap((query: string) => this.mockDataService.getCharacters(query)));
+      this.subscriptions.push(this.charactersResults$.subscribe(value => console.log(value)));
         // YOUR CODE ENDS HERE
   }
 
@@ -66,7 +67,8 @@ export class AppComponent implements OnInit, OnDestroy {
       const firstRequest = this.mockDataService.getCharacters();
       const secondRequest = this.mockDataService.getPlanets();
       this.planetAndCharactersResults$ = forkJoin([firstRequest, secondRequest])
-      .pipe(map((data:[any,any]) => data.reduce((result, arr) => [...result, ...arr], [])))
+          .pipe(map((data: [any, any]) => data.reduce((result, arr) => [...result, ...arr], [])))
+      this.subscriptions.push(this.planetAndCharactersResults$.subscribe(value => console.log(value)));
     // YOUR CODE ENDS HERE
   }
 
@@ -77,14 +79,15 @@ export class AppComponent implements OnInit, OnDestroy {
     - Subscribe to changes
     - Check the received value using the areAllValuesTrue function and pass them to the isLoading variable. */
       // YOUR CODE STARTS HERE
-      const combination = combineLatest([this.mockDataService.getCharactersLoader(), this.mockDataService.getPlanetLoader()])
-      .pipe(map(data => this.areAllValuesTrue(data))).subscribe(data => this.isLoading = data);
+     this.subscriptions.push(combineLatest([this.mockDataService.getCharactersLoader(), this.mockDataService.getPlanetLoader()])
+          .pipe(map(data => this.areAllValuesTrue(data))).subscribe(data => this.isLoading = data));
     // YOUR CODE ENDS HERE
   }
 
   ngOnDestroy(): void {
     // 5.2 Unsubscribe from all subscriptions
-    // YOUR CODE STARTS HERE
+      // YOUR CODE STARTS HERE
+      this.subscriptions.forEach(subscription => subscription.unsubscribe());
     // YOUR CODE ENDS HERE
   }
 
