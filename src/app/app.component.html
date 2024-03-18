@@ -1,23 +1,21 @@
-<app-header></app-header>
+<app-header>
+    <app-button [buttonText]="header"></app-button>
+</app-header>
 <div class="app-root">
-  <!-- Search component -->
-  <!--<app-search></app-search>-->
+    <!-- Search component -->
+    <!-- <app-search></app-search> -->
+    <!-- Info component -->
+    <app-info [title]="headline" [text]="text"><app-button [buttonText]="courseAdd"></app-button></app-info>
 
-  <!-- Info component -->
-  <!--<app-info></app-info>-->
+    <!-- Course Card component -->
+    <app-course-card (clickOnShow)="showCourse($event)"></app-course-card>
 
-  <!-- Course Card component -->
-  <!--<app-course-card></app-course-card>-->
-
-  <!-- Login Form component -->
-  <!--<app-login-form></app-login-form>-->
-
-  <!-- Login Form component -->
-  <!--<app-registration-form></app-registration-form>-->
-
-  <!-- Login Form component -->
-  <!--<app-course-form></app-course-form>-->
-
-  <!-- Modal component -->
-  <!-- <app-modal [message]="'Message'" [title]="'Title'" [okButtonText]="'Ok'" [cancelButtonText]="'Cancel'"></app-modal> -->
+    <!-- Login Form component -->
+    <!-- <app-login-form></app-login-form> -->
+    <!-- Login Form component -->
+    <!-- <app-registration-form></app-registration-form> -->
+    <!-- Login Form component -->
+    <!-- <app-course-form></app-course-form> -->
+    <!-- Modal component -->
+    <!-- <app-modal [message]="'Message'" [title]="'Title'" [okButtonText]="'Ok'" [cancelButtonText]="'Cancel'"></app-modal> -->
 </div>
