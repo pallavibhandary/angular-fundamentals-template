@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { mockedCoursesList } from '../../mocks/mock';
+import { mockedCoursesList } from '../../mock';
 
 @Component({
     selector: 'app-course-card',
