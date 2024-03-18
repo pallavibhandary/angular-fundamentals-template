@@ -8,6 +8,12 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent {
+    @Input() buttonText:string = '';
+  @Input() iconName:string='';
+  @Input() editableFlag:Boolean= false;
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas);
+  }
   constructor(library: FaIconLibrary) {
     library.addIconPacks(fas);
   }
