@@ -1,4 +1,6 @@
 <div class="app-button">
-  <!-- Replace the text below with your code -->
-  Button
+    <!-- Replace the text below with your code -->
+    {{buttonText}}
 </div>
+<div class="app-button" *ngIf="iconName !== '' && editableFlag === true"><span><fa-icon [icon]="['fas', 'trash']"></fa-icon></span></div>
+<div class="app-button" *ngIf="iconName !== '' && editableFlag === true"><span><fa-icon [icon]="['fas', 'edit']"></fa-icon></span></div>
