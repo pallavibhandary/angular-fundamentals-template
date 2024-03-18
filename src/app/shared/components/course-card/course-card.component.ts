@@ -22,3 +22,4 @@ export class CourseCardComponent {
     showCourseDetails(item: any) {
         this.clickOnShow.emit(item);
     }
+}
