@@ -3,10 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
+    "\\src\\app\\features",
+    "\\src\\app\\features\\course-info",
     "\\src\\app\\shared",
     "\\src\\app\\shared\\components",
-    "\\src\\app\\shared\\components\\button"
+    "\\src\\app\\shared\\components\\course-card",
+    "\\src\\app\\shared\\components\\header",
+    "\\src\\app\\shared\\components\\info"
   ],
-  "SelectedNode": "\\src\\app\\shared\\components\\button\\button.component.html",
+  "SelectedNode": "\\src\\app\\features\\course-info\\course-info.component.ts",
   "PreviewInSolutionExplorer": false
 }
