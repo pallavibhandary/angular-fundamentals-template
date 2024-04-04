@@ -1,9 +1,31 @@
 @import 'src/app/shared/styles/styles.scss';
 
 .login-form {
-  width: 260px;
-  margin-top: 36px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+    width: 260px;
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.disabled {
+    pointer-events: none;
+    /* for "disabled" effect */
+    opacity: 0.5;
+    background: #CCC;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: flex;
+    font-weight: bold;
+}
+
+input[type=text], [type=password] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
 }

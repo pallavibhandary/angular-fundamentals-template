@@ -3,14 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\features",
-    "\\src\\app\\features\\course-info",
     "\\src\\app\\shared",
     "\\src\\app\\shared\\components",
-    "\\src\\app\\shared\\components\\course-card",
-    "\\src\\app\\shared\\components\\header",
-    "\\src\\app\\shared\\components\\info"
+    "\\src\\app\\shared\\components\\course-form",
+    "\\src\\app\\shared\\components\\login-form",
+    "\\src\\app\\shared\\components\\registration-form",
+    "\\src\\app\\shared\\components\\search",
+    "\\src\\app\\shared\\model"
   ],
-  "SelectedNode": "\\src\\app\\features\\course-info\\course-info.component.ts",
+  "SelectedNode": "\\src\\app\\shared\\components\\course-form\\course-form.component.ts",
   "PreviewInSolutionExplorer": false
 }
