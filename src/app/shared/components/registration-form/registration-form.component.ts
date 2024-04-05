@@ -14,7 +14,7 @@ export class RegistrationFormComponent {
 
     ngOnInit() {
         this.registrationForm = new FormGroup({
-            name: new FormControl('', Validators.required),
+            name: new FormControl('', [Validators.required, Validators.minLength(6)]),
             email: new FormControl('', [Validators.required]),
             password: new FormControl('', Validators.required)
         });
