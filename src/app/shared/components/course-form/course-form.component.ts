@@ -18,26 +18,26 @@ export class CourseFormComponent implements OnInit {
     }
     courseForm!: FormGroup;
     create = 'CREATE COURSE'
+    cancel = 'CANCEL'
     createAuthor = 'CREATE AUTHOR'
     course: Courses[] = [];
     id: string = '';
     title: string = '';
     description: string = '';
     creationDate: string = '';
-    duration: number = 0;
+    duration: number | undefined;
     authorsList: string[] = [];
     courseAuthorsList: string[] = [];
     author: string = '';
-    count: number = 0;
     // Use the names `title`, `description`, `author`, 'authors' (for authors list), `duration` for the form controls.
     ngOnInit() {
         this.courseForm = new FormGroup({
             title: new FormControl('', [Validators.required, Validators.minLength(2)]),
-            desciption: new FormControl('', [Validators.required, Validators.minLength(2)]),
-            author: new FormControl('', [Validators.required, Validators.minLength(2)]),
-            authors: new FormArray([]),
+            description: new FormControl('', [Validators.required, Validators.minLength(2)]),
+            author: new FormControl('', Validators.minLength(2)),
+            authors: new FormArray([], Validators.required),
             courseAuthors: new FormArray([], [Validators.required]),
-            duration: new FormArray([], [Validators.required])
+            duration: new FormControl([], [Validators.required])
         });
     }
 
@@ -50,7 +50,8 @@ export class CourseFormComponent implements OnInit {
     }
 
     onSubmit(courseForm: FormGroup) {
-        if (!this.courseForm.valid) {
+        this.courseForm.markAllAsTouched();
+        if (this.courseForm.valid) {
             console.log(this.courseForm.value);
         }
     }
@@ -83,4 +84,6 @@ export class CourseFormComponent implements OnInit {
         this.authorsList.splice(authorIndex, 1);
         this.authors.removeAt(authorIndex);
     }
+
+
 }
