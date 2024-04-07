@@ -9,7 +9,7 @@
                     <!--Use the name `name` for the form control.-->
                     <input type="text" id="name" placeholder="Input text" formControlName="name" />
                     <span id="nameErrorMessage" class="text-danger" *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched && registrationForm.get('name')?.errors?.['required']">Name is required.</span>
-                    <span class="text-danger" *ngIf="registrationForm.get('name')?.errors?.['minlength']">Name must be at least 6 characters long.</span>
+                    <span class="text-danger" *ngIf="registrationForm.get('name')?.errors?.['minlength']">Name is required.</span>
                 </div>
                 <div class="form__control">
                     <!--Use the name `email` for the form control.-->

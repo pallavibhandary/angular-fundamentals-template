@@ -8,9 +8,8 @@
     "\\src\\app\\shared\\components\\course-form",
     "\\src\\app\\shared\\components\\login-form",
     "\\src\\app\\shared\\components\\registration-form",
-    "\\src\\app\\shared\\components\\search",
     "\\src\\app\\shared\\model"
   ],
-  "SelectedNode": "\\src\\app\\shared\\components\\course-form\\course-form.component.scss",
+  "SelectedNode": "\\src\\app\\shared\\components\\course-form\\course-form.component.ts",
   "PreviewInSolutionExplorer": false
 }

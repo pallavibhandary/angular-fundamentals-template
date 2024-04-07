@@ -37,7 +37,7 @@ export class CourseFormComponent implements OnInit {
             author: new FormControl('', Validators.minLength(2)),
             authors: new FormArray([], Validators.required),
             courseAuthors: new FormArray([], [Validators.required]),
-            duration: new FormControl([], [Validators.required])
+            duration: new FormControl([], [Validators.required, Validators.pattern(/^[1-9]\d*$/)])
         });
     }
 
