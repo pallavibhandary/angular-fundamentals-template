@@ -2,5 +2,6 @@
     <!-- Replace ::text:: with your code -->
     <div class="app-info__header">{{title}}</div>
     <div class="app-info__title">{{text}}</div>
-    <ng-content></ng-content>
+    <app-button [buttonText]="courseAdd" (click)="addNewCourse()"></app-button>
+    <router-outlet></router-outlet>
 </div>

@@ -5,11 +5,12 @@
     "\\src\\app",
     "\\src\\app\\shared",
     "\\src\\app\\shared\\components",
-    "\\src\\app\\shared\\components\\course-form",
-    "\\src\\app\\shared\\components\\login-form",
-    "\\src\\app\\shared\\components\\registration-form",
-    "\\src\\app\\shared\\model"
+    "\\src\\app\\shared\\components\\button",
+    "\\src\\app\\shared\\components\\info",
+    "\\src\\app\\user",
+    "\\src\\app\\user\\guards",
+    "\\src\\app\\user\\services"
   ],
-  "SelectedNode": "\\src\\app\\shared\\components\\course-form\\course-form.component.ts",
+  "SelectedNode": "\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }

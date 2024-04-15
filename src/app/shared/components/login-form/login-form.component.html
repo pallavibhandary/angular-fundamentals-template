@@ -21,7 +21,7 @@
                     <app-button [buttonText]="login" [ngClass]="{'disabled':!loginForm.valid}" (click)="onSubmit(loginForm)"></app-button>
                 </div>
                 <div class="form__text">
-                    If you don't have an account you may <strong>Registration</strong>
+                    If you don't have an account you may <strong (click)="registerLink()">Registration</strong>
                 </div>
             </div>
         </div>

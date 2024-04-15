@@ -1,3 +1,4 @@
+<app-info></app-info>
 <div class="course-card" *ngFor="let item of mockedCoursesList1">
     <div class="course-card__description">
         <!-- Replace ::text:: with your code -->
@@ -14,10 +15,13 @@
             <div><b>Created: </b><span class="course-card__date">{{item.creationDate}}</span></div>
         </div>
         <div class="course-card__info-actions">
-            <app-button [buttonText]="showCourse" (click)="showCourseDetails(item)" [iconName]="icons" [iconName]="iconsEdit" [editableFlag]="editable"></app-button>
             <div class="course-card__buttons">
                 <!--Enter your code here-->
+                <app-button [buttonText]="showCourse" [routerLink]="[item.id]" [iconName]="icons" [iconName]="iconsEdit" [editableFlag]="editable"></app-button>
+
             </div>
         </div>
     </div>
 </div>
+<!-- (click) ="showCourseDetails(item.id)" -->
+<!--[routerLink]="[item.id]"-->

@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login-form',
@@ -13,7 +14,7 @@ export class LoginFormComponent {
     password!: string;
     login = 'LOGIN';
 
-    constructor() {
+    constructor(private router: Router) {
 
     }
 
@@ -26,6 +27,10 @@ export class LoginFormComponent {
         } else {
             console.log("Please enter a user email and password.");
         }
+    }
+
+    registerLink() {
+        this.router.navigate(['registration']);
     }
 
 }
